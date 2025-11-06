@@ -90,11 +90,7 @@
   </div>
 
   <!-- 🎵 YouTube embed (disembunyikan tapi tetap jalan) -->
-  <iframe
-    id="youtubeMusic"
-    src=""
-    allow="autoplay"
-  ></iframe>
+ <audio id="music" src="sunday.mp3.mp3" preload="auto"></audio>
 
   <!-- confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -118,12 +114,14 @@
     const youtube = document.getElementById('youtubeMusic');
 
     btn.addEventListener('click', () => {
-      if (index === 0) {
-        // Set src YouTube hanya setelah klik pertama (supaya autoplay jalan)
-        youtube.src = "https://www.youtube.com/embed/LD2I5iNDegM?autoplay=1&loop=1&playlist=LD2I5iNDegM";
-      }
-      nextSlide();
+  if (index === 0) {
+    // Putar musik di klik pertama
+    document.getElementById("music").play().catch(() => {
+      alert("Klik lagi ya biar lagunya jalan 🎶");
     });
+  }
+  nextSlide();
+});
 
     function nextSlide() {
       msg.classList.remove('show');
@@ -156,3 +154,4 @@
   </script>
 </body>
 </html>
+
